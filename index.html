@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Would An Aussie Say? | Your Aussie Uncle</title>
+    <meta name="description" content="Test your Australian workplace English! Can you decode what Aussies really mean at work? Take the challenge and find out.">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://challenge.youraussieuncle.com.au/">
+    <meta property="og:title" content="What Would An Aussie Say? | Workplace Challenge">
+    <meta property="og:description" content="Test your Australian workplace English! Can you decode what Aussies really mean at work?">
+    <meta property="og:image" content="images/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What Would An Aussie Say?">
+    <meta name="twitter:description" content="Test your Australian workplace English! Can you decode what Aussies really mean at work?">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🇦🇺</span>
+                <span class="logo-text">Your Aussie Uncle</span>
+            </div>
+        </header>
+
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="hero">
+                <h1>What Would An <span class="highlight">Aussie</span> Say?</h1>
+                <p class="subtitle">Your boss said something confusing. Your colleague gave you feedback. What do they <em>really</em> mean?</p>
+                <p class="challenge-text">10 workplace scenarios. Can you decode them all?</p>
+            </div>
+
+            <div class="category-select">
+                <h3>Choose your challenge:</h3>
+                <div class="category-grid">
+                    <button class="category-btn" data-category="all">
+                        <span class="cat-icon">🎯</span>
+                        <span class="cat-name">All Scenarios</span>
+                        <span class="cat-count">10 random</span>
+                    </button>
+                    <button class="category-btn" data-category="boss">
+                        <span class="cat-icon">👔</span>
+                        <span class="cat-name">Boss Talk</span>
+                        <span class="cat-count">Decode your manager</span>
+                    </button>
+                    <button class="category-btn" data-category="meetings">
+                        <span class="cat-icon">📋</span>
+                        <span class="cat-name">Meeting Speak</span>
+                        <span class="cat-count">Survive any meeting</span>
+                    </button>
+                    <button class="category-btn" data-category="smalltalk">
+                        <span class="cat-icon">☕</span>
+                        <span class="cat-name">Small Talk</span>
+                        <span class="cat-count">Kitchen & corridor</span>
+                    </button>
+                    <button class="category-btn" data-category="feedback">
+                        <span class="cat-icon">💬</span>
+                        <span class="cat-name">Feedback</span>
+                        <span class="cat-count">What they really think</span>
+                    </button>
+                    <button class="category-btn" data-category="email">
+                        <span class="cat-icon">📧</span>
+                        <span class="cat-name">Email Phrases</span>
+                        <span class="cat-count">Read between the lines</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Screen -->
+        <section id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+                <span class="progress-text" id="progress-text">1 / 10</span>
+            </div>
+
+            <div class="scenario-card" id="scenario-card">
+                <div class="scenario-context" id="scenario-context">
+                    <!-- Context like "Your boss says:" -->
+                </div>
+                <div class="scenario-quote" id="scenario-quote">
+                    <!-- The actual phrase -->
+                </div>
+            </div>
+
+            <div class="question-prompt">
+                <p>What do they <span class="highlight">really</span> mean?</p>
+            </div>
+
+            <div class="options-container" id="options-container">
+                <!-- Options will be inserted here -->
+            </div>
+
+            <div class="feedback-card" id="feedback-card">
+                <div class="feedback-icon" id="feedback-icon"></div>
+                <div class="feedback-title" id="feedback-title"></div>
+                <div class="feedback-explanation" id="feedback-explanation"></div>
+                <button class="btn btn-primary" id="next-btn">Next Scenario</button>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="screen">
+            <div class="results-card">
+                <div class="score-circle" id="score-circle">
+                    <span class="score-number" id="score-number">0</span>
+                    <span class="score-total">/ 10</span>
+                </div>
+                <h2 class="results-title" id="results-title">Not bad!</h2>
+                <p class="results-message" id="results-message">You're getting the hang of Aussie workplace speak.</p>
+            </div>
+
+            <div class="results-breakdown" id="results-breakdown">
+                <!-- Category breakdown will go here -->
+            </div>
+
+            <div class="share-section">
+                <p>Challenge your mates:</p>
+                <div class="share-buttons">
+                    <button class="btn btn-share" id="share-btn">
+                        📱 Share Result
+                    </button>
+                    <button class="btn btn-copy" id="copy-btn">
+                        📋 Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h3>Want to master Aussie workplace English?</h3>
+                <p>Get the complete guide with 200+ scenarios, video explanations, and practice exercises.</p>
+                <a href="https://youraussieuncle.com.au/quiz" class="btn btn-cta">Take the Full Quiz →</a>
+            </div>
+
+            <button class="btn btn-secondary" id="restart-btn">Try Again</button>
+        </section>
+
+        <!-- Email Gate Screen -->
+        <section id="email-screen" class="screen">
+            <div class="email-card">
+                <div class="email-icon">🎉</div>
+                <h2>Nice work! You've completed the free scenarios.</h2>
+                <p>Want to unlock <strong>50 more scenarios</strong> across all categories?</p>
+                
+                <form id="email-form" class="email-form">
+                    <input type="email" id="email-input" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Unlock More Scenarios</button>
+                </form>
+                
+                <p class="email-note">No spam. Just Aussie workplace tips.</p>
+                
+                <button class="btn btn-text" id="skip-email">Maybe later</button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with 🇦🇺 by <a href="https://youraussieuncle.com.au">Your Aussie Uncle</a></p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/scenarios.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
