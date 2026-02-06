@@ -57,7 +57,7 @@ const scenarios = [
             { text: "They'll check in later to help", correct: false }
         ],
         explanation: "This phrase transfers complete ownership. If something goes wrong, it's on you. If it goes well, you get the credit. Either way, don't expect hand-holding from this point.",
-        free: false
+        free: true
     },
     {
         id: 5,
@@ -71,7 +71,7 @@ const scenarios = [
             { text: "They want a second opinion", correct: false }
         ],
         explanation: "'A bit more realistic' is a soft way of saying your idea, timeline, or expectations are unrealistic. In Aussie speak, 'a bit' often means 'a lot'. Time to scale back significantly.",
-        free: false
+        free: true
     },
     {
         id: 6,
@@ -185,7 +185,7 @@ const scenarios = [
             { text: "They're asking you to remind them", correct: false }
         ],
         explanation: "'Circling back' is one of the most overused meeting phrases. It can mean they'll genuinely follow up, or it can be a way to move on without committing. If it matters to you, send a follow-up.",
-        free: false
+        free: true
     },
     {
         id: 14,
@@ -199,7 +199,7 @@ const scenarios = [
             { text: "Someone should research it more", correct: false }
         ],
         explanation: "Parking a topic means acknowledging it but not discussing it now. Whether it ever gets 'unparked' depends on how important it really is. Don't hold your breath.",
-        free: false
+        free: true
     },
     {
         id: 15,
@@ -327,7 +327,7 @@ const scenarios = [
             { text: "They're checking if you know it's a long weekend", correct: false }
         ],
         explanation: "Australians love their public holidays and asking about plans is standard small talk. A simple answer works: 'Nothing major, might hit the beach. You?' Don't overthink it.",
-        free: false
+        free: true
     },
     {
         id: 24,
@@ -341,7 +341,7 @@ const scenarios = [
             { text: "They're testing your sports knowledge", correct: false }
         ],
         explanation: "You don't have to follow footy to fit in. 'Nah, not really my thing' is perfectly acceptable. If you want to engage: 'Who are you going for?' shows interest without faking knowledge.",
-        free: false
+        free: true
     },
     {
         id: 25,
@@ -469,7 +469,7 @@ const scenarios = [
             { text: "They've changed their mind about the feedback", correct: false }
         ],
         explanation: "This is the closing bread of the feedback sandwich. It's meant to end on a positive note, but don't let it distract from the middle part. That's still what you need to address.",
-        free: false
+        free: true
     },
     {
         id: 34,
@@ -483,7 +483,7 @@ const scenarios = [
             { text: "They're not sure what they want", correct: false }
         ],
         explanation: "'Perhaps' in Australian feedback is a softener, not uncertainty. When your manager says 'perhaps you could', they mean 'you should'. The polite framing doesn't make it optional.",
-        free: false
+        free: true
     },
     {
         id: 35,
@@ -611,7 +611,7 @@ const scenarios = [
             { text: "They want your opinion but it's optional", correct: false }
         ],
         explanation: "'Please advise' is a request for action, not a polite sign-off. They need you to respond with information, a decision, or next steps. Don't leave this email unanswered.",
-        free: false
+        free: true
     },
     {
         id: 44,
@@ -625,7 +625,7 @@ const scenarios = [
             { text: "They're just double-checking something", correct: false }
         ],
         explanation: "There's nothing friendly about a 'friendly reminder'. It means you've missed a deadline or haven't done something you should have. Action required immediately.",
-        free: false
+        free: true
     },
     {
         id: 45,

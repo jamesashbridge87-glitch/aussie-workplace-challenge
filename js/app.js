@@ -218,7 +218,7 @@ class AussieChallenge {
             messageEl.textContent = "You really get Aussie workplace speak. A few more tips and you'll be fluent.";
         } else if (percentage >= 60) {
             titleEl.textContent = "Not bad!";
-            messageEl.textContent = "You're getting the hang of it. Keep learning and you'll decode any Aussie.";
+            messageEl.textContent = "You're getting the hang of it. Keep learning and you'll understand any Aussie.";
         } else if (percentage >= 40) {
             titleEl.textContent = "Getting there";
             messageEl.textContent = "Aussie workplace speak takes practice. You're on the right track.";
@@ -267,7 +267,7 @@ class AussieChallenge {
 
     async shareResults() {
         const percentage = Math.round((this.score / this.currentScenarios.length) * 100);
-        const text = `I scored ${this.score}/${this.currentScenarios.length} (${percentage}%) on "What Would An Aussie Say?" 🇦🇺\n\nCan you decode Aussie workplace speak?\n\n`;
+        const text = `I scored ${this.score}/${this.currentScenarios.length} (${percentage}%) on "What Would An Aussie Say?" 🇦🇺\n\nCan you figure out what Aussies really mean at work?\n\n`;
         const url = window.location.href;
 
         if (navigator.share) {
