@@ -10,7 +10,41 @@ class AussieChallenge {
         this.hasSeenEmailGate = localStorage.getItem('seenEmailGate') === 'true';
         this.userEmail = localStorage.getItem('userEmail') || null;
         
+        // Sound effects (short base64 tones)
+        this.sounds = {
+            correct: this.createTone(800, 0.15, 'sine'),
+            incorrect: this.createTone(200, 0.25, 'square')
+        };
+        
         this.init();
+    }
+
+    createTone(frequency, duration, type) {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        return { audioCtx, frequency, duration, type };
+    }
+
+    playSound(soundType) {
+        try {
+            const sound = this.sounds[soundType];
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            
+            oscillator.frequency.value = sound.frequency;
+            oscillator.type = sound.type;
+            
+            gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + sound.duration);
+            
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + sound.duration);
+        } catch (e) {
+            // Audio not supported, fail silently
+        }
     }
 
     init() {
@@ -208,13 +242,31 @@ class AussieChallenge {
             feedbackIcon.textContent = '✅';
             feedbackTitle.textContent = 'Spot on!';
             feedbackTitle.className = 'feedback-title correct';
+            this.playSound('correct');
         } else {
             feedbackIcon.textContent = '❌';
             feedbackTitle.textContent = 'Not quite';
             feedbackTitle.className = 'feedback-title incorrect';
+            this.playSound('incorrect');
         }
 
         feedbackExplanation.textContent = scenario.explanation;
+
+        // Add "Hear how it sounds" prompt on wrong answer
+        let hearItPrompt = feedbackCard.querySelector('.hear-it-prompt');
+        if (hearItPrompt) hearItPrompt.remove();
+        
+        if (!isCorrect) {
+            hearItPrompt = document.createElement('div');
+            hearItPrompt.className = 'hear-it-prompt';
+            hearItPrompt.innerHTML = '<span>🔊</span><span>Hear how it sounds</span>';
+            hearItPrompt.addEventListener('click', () => {
+                const audio = document.getElementById('scenario-audio');
+                audio.currentTime = 0;
+                audio.play();
+            });
+            feedbackExplanation.after(hearItPrompt);
+        }
 
         // Update button text for last question
         const nextBtn = document.getElementById('next-btn');
@@ -256,9 +308,11 @@ class AussieChallenge {
         if (percentage === 100) {
             titleEl.textContent = "Perfect score! 🎉";
             messageEl.textContent = "You're practically Aussie! Your workplace communication is on point.";
+            this.triggerConfetti();
         } else if (percentage >= 80) {
             titleEl.textContent = "Impressive!";
             messageEl.textContent = "You really get Aussie workplace speak. A few more tips and you'll be fluent.";
+            this.triggerConfetti();
         } else if (percentage >= 60) {
             titleEl.textContent = "Not bad!";
             messageEl.textContent = "You're getting the hang of it. Keep learning and you'll understand any Aussie.";
@@ -272,6 +326,26 @@ class AussieChallenge {
 
         // Show category breakdown
         this.showBreakdown();
+    }
+
+    triggerConfetti() {
+        const colors = ['#FF65BE', '#11E8F6', '#D2FF42', '#FDA400', '#FBFF22'];
+        const container = document.createElement('div');
+        container.className = 'confetti-container';
+        document.body.appendChild(container);
+
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+            container.appendChild(confetti);
+        }
+
+        // Remove container after animation
+        setTimeout(() => container.remove(), 5000);
     }
 
     showBreakdown() {
