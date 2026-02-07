@@ -59,6 +59,32 @@ class AussieChallenge {
             this.hasSeenEmailGate = true;
             this.showResults();
         });
+
+        // Audio button
+        document.getElementById('audio-btn').addEventListener('click', () => {
+            this.playAudio();
+        });
+    }
+
+    playAudio() {
+        const audio = document.getElementById('scenario-audio');
+        const btn = document.getElementById('audio-btn');
+        
+        if (audio.paused) {
+            audio.play();
+            btn.classList.add('playing');
+            btn.querySelector('.audio-text').textContent = 'Playing...';
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            btn.classList.remove('playing');
+            btn.querySelector('.audio-text').textContent = 'Hear it';
+        }
+        
+        audio.onended = () => {
+            btn.classList.remove('playing');
+            btn.querySelector('.audio-text').textContent = 'Hear it';
+        };
     }
 
     showScreen(screenId) {
@@ -105,6 +131,17 @@ class AussieChallenge {
         // Show scenario
         document.getElementById('scenario-context').textContent = scenario.context;
         document.getElementById('scenario-quote').textContent = scenario.quote;
+
+        // Load audio for this scenario
+        const audioId = String(scenario.id).padStart(2, '0');
+        const audio = document.getElementById('scenario-audio');
+        audio.src = `audio/scenario-${audioId}.mp3`;
+        audio.load();
+        
+        // Reset audio button state
+        const audioBtn = document.getElementById('audio-btn');
+        audioBtn.classList.remove('playing');
+        audioBtn.querySelector('.audio-text').textContent = 'Hear it';
 
         // Show options
         const container = document.getElementById('options-container');

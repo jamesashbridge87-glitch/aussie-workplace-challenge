@@ -233,6 +233,48 @@ body {
     color: var(--primary);
 }
 
+/* Audio Button */
+.audio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card-bg-light);
+    border: 2px solid var(--secondary);
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.audio-btn:hover {
+    background: var(--secondary);
+    color: var(--background);
+    transform: scale(1.05);
+}
+
+.audio-btn:active {
+    transform: scale(0.98);
+}
+
+.audio-btn.playing {
+    background: var(--secondary);
+    color: var(--background);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.audio-icon {
+    font-size: 1.2rem;
+}
+
 /* Question Prompt */
 .question-prompt {
     text-align: center;
