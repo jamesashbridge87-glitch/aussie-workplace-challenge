@@ -86,16 +86,21 @@
             </div>
 
             <div class="scenario-card" id="scenario-card">
-                <div class="scenario-context" id="scenario-context">
-                    <!-- Context like "Your boss says:" -->
+                <div class="scenario-image-container">
+                    <img src="" alt="Scenario illustration" class="scenario-image" id="scenario-image">
                 </div>
-                <div class="scenario-quote" id="scenario-quote">
-                    <!-- The actual phrase -->
+                <div class="scenario-content">
+                    <div class="scenario-context" id="scenario-context">
+                        <!-- Context like "Your boss says:" -->
+                    </div>
+                    <div class="scenario-quote" id="scenario-quote">
+                        <!-- The actual phrase -->
+                    </div>
+                    <button class="audio-btn" id="audio-btn" aria-label="Listen to phrase">
+                        <span class="audio-icon">🔊</span>
+                        <span class="audio-text">Hear it</span>
+                    </button>
                 </div>
-                <button class="audio-btn" id="audio-btn" aria-label="Listen to phrase">
-                    <span class="audio-icon">🔊</span>
-                    <span class="audio-text">Hear it</span>
-                </button>
                 <audio id="scenario-audio" preload="auto"></audio>
             </div>
 

@@ -132,10 +132,16 @@ class AussieChallenge {
         document.getElementById('scenario-context').textContent = scenario.context;
         document.getElementById('scenario-quote').textContent = scenario.quote;
 
+        // Load image for this scenario
+        const scenarioId = String(scenario.id).padStart(2, '0');
+        const scenarioImage = document.getElementById('scenario-image');
+        scenarioImage.classList.add('loading');
+        scenarioImage.src = `images/scenario-${scenarioId}.jpg`;
+        scenarioImage.onload = () => scenarioImage.classList.remove('loading');
+
         // Load audio for this scenario
-        const audioId = String(scenario.id).padStart(2, '0');
         const audio = document.getElementById('scenario-audio');
-        audio.src = `audio/scenario-${audioId}.mp3`;
+        audio.src = `audio/scenario-${scenarioId}.mp3`;
         audio.load();
         
         // Reset audio button state
