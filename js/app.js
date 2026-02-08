@@ -98,6 +98,37 @@ class AussieChallenge {
         document.getElementById('audio-btn').addEventListener('click', () => {
             this.playAudio();
         });
+
+        // SWIPE NAVIGATION: Swipe left to go to next question
+        this.setupSwipeNavigation();
+    }
+
+    setupSwipeNavigation() {
+        const quizScreen = document.getElementById('quiz-screen');
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        quizScreen.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        quizScreen.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipe(touchStartX, touchEndX);
+        }, { passive: true });
+    }
+
+    handleSwipe(startX, endX) {
+        const swipeThreshold = 80;
+        const diff = startX - endX;
+
+        // Swipe left (next) - only if feedback is showing
+        if (diff > swipeThreshold) {
+            const feedbackCard = document.getElementById('feedback-card');
+            if (feedbackCard.classList.contains('show')) {
+                this.nextScenario();
+            }
+        }
     }
 
     playAudio() {
@@ -277,6 +308,11 @@ class AussieChallenge {
         }
 
         feedbackCard.classList.add('show');
+
+        // AUTO-SCROLL: Smooth scroll to show feedback and Next button
+        setTimeout(() => {
+            feedbackCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
     }
 
     nextScenario() {

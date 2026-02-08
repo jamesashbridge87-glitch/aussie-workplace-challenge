@@ -654,10 +654,19 @@ body {
     color: var(--secondary);
 }
 
-/* Responsive */
+/* Responsive - MOBILE OPTIMIZED FOR MINIMAL SCROLLING */
 @media (max-width: 480px) {
     .app-container {
-        padding: 15px;
+        padding: 10px;
+    }
+
+    .header {
+        padding: 8px 0;
+        margin-bottom: 10px;
+    }
+
+    .logo-img {
+        height: 32px;
     }
 
     .hero h1 {
@@ -681,37 +690,86 @@ body {
         grid-column: span 1;
     }
 
+    /* COMPACT QUIZ SCREEN */
+    #quiz-screen {
+        gap: 12px;
+    }
+
+    .progress-bar {
+        height: 32px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    /* SMALLER SCENARIO IMAGE */
+    .scenario-image-container {
+        max-height: 120px;
+        aspect-ratio: auto;
+    }
+
     .scenario-content {
-        padding: 20px 15px;
+        padding: 12px 15px;
     }
 
     .scenario-context {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
     }
 
     .scenario-quote {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .audio-btn {
-        padding: 8px 16px;
-        font-size: 0.85rem;
+        padding: 6px 14px;
+        font-size: 0.8rem;
+        margin-top: 12px;
     }
 
     .question-prompt {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        padding: 5px 0;
+    }
+
+    /* COMPACT OPTIONS */
+    .options-container {
+        gap: 8px;
     }
 
     .option-btn {
-        padding: 14px 16px;
-        font-size: 0.95rem;
+        padding: 12px 14px;
+        font-size: 0.9rem;
     }
 
+    .option-letter {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+    }
+
+    /* COMPACT FEEDBACK */
     .feedback-card {
-        padding: 20px 15px;
+        padding: 15px;
+    }
+
+    .feedback-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+
+    .feedback-title {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
     }
 
     .feedback-explanation {
+        font-size: 0.85rem;
+        margin-bottom: 12px;
+    }
+
+    #next-btn {
+        padding: 12px 20px;
         font-size: 0.95rem;
     }
 
@@ -738,17 +796,44 @@ body {
 }
 
 @media (max-width: 360px) {
+    .app-container {
+        padding: 8px;
+    }
+
     .hero h1 {
         font-size: 1.4rem;
     }
 
+    /* HIDE IMAGE ON VERY SMALL SCREENS */
+    .scenario-image-container {
+        max-height: 100px;
+    }
+
+    .scenario-content {
+        padding: 10px 12px;
+    }
+
     .scenario-quote {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .option-btn {
-        padding: 12px 14px;
-        font-size: 0.9rem;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    .option-letter {
+        width: 22px;
+        height: 22px;
+        font-size: 0.7rem;
+    }
+
+    .feedback-card {
+        padding: 12px;
+    }
+
+    .feedback-explanation {
+        font-size: 0.8rem;
     }
 }
 
